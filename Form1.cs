@@ -19,8 +19,7 @@ namespace ContainerVervoer
         Ship ship = new Ship(2,3,3,1000);
         private void Button1_Click(object sender, EventArgs e)
         {
-            ship.initializeGrid();
-            MessageBox.Show(ship.Rows.Count.ToString());
+            
         }
     }
 }
