@@ -14,7 +14,9 @@ namespace ContainerVervoer
         private int length;
         private int maxweight;
         private int weight;
-        
+        private List<Container> Stack = new List<Container>();
+        private List<List<Container>> Row = new List<List<Container>>();
+        private List<List<List<Container>>> cargoList = new List<List<List<Container>>>();
         
         //constructor
         public Ship(int width, int height, int length, int maxweight)
