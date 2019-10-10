@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.29230.47
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContainerVervoer", "ContainerVervoer.csproj", "{3A1E3540-F9A5-43FD-9F80-B69AE2369AF5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContainerVervoerTests", "..\ContainerVervoerTests\ContainerVervoerTests.csproj", "{4B63FB85-F7D1-4FC6-86A7-7C72D8C74C50}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,10 +15,6 @@ Global
 		{3A1E3540-F9A5-43FD-9F80-B69AE2369AF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3A1E3540-F9A5-43FD-9F80-B69AE2369AF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3A1E3540-F9A5-43FD-9F80-B69AE2369AF5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4B63FB85-F7D1-4FC6-86A7-7C72D8C74C50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4B63FB85-F7D1-4FC6-86A7-7C72D8C74C50}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4B63FB85-F7D1-4FC6-86A7-7C72D8C74C50}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4B63FB85-F7D1-4FC6-86A7-7C72D8C74C50}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
