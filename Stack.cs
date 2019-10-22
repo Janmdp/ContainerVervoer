@@ -36,5 +36,47 @@ namespace ContainerVervoer
                 return true;
             }
         }
+
+        public bool checkWeight(Container container)
+        {
+            int weightonlowest = 0;
+            foreach (Container _container in this.containers )
+            {
+                weightonlowest = weightonlowest + _container.Weight;
+            }
+
+            if (weightonlowest + container.Weight >= 120000)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        public bool checkValuable(Container _container)
+        {
+            if (this.containers[containers.Count].CargoType == CargoType.Cargo.Valuable)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        public bool checkCoolable(Row row)
+        {
+            if (row.Stacks[0] == this)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

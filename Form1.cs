@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -21,7 +22,13 @@ namespace ContainerVervoer
         private void Button1_Click(object sender, EventArgs e)
         {
             ship.Initialize();
-            MessageBox.Show($"The ship contains {ship.Rows[0].Stacks[0].Containers.Count} rows");
+            start(ship);
+            MessageBox.Show($"The ship contains {ship.Rows[0].Stacks[0].Containers.Count} containers");
+        }
+
+        public void start(Ship ship)
+        {
+            Process.Start("chrome.exe", $"https://i872272core.venus.fhict.nl/ContainerVisualizer/index.html?length={ship.Length}&width={ship.Width}");
         }
     }
 }

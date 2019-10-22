@@ -29,6 +29,8 @@ namespace ContainerVervoer
         //properties
         public int Weight { get => weight; set => weight = value; }
         public List<Row> Rows { get => rows; set => rows = value;}
+        public int Length { get => length;}
+        public int Width { get => width;}
         //methods
 
         public void Initialize()
@@ -43,7 +45,7 @@ namespace ContainerVervoer
                     
                 }
 
-                for (int j = 0; j < 5; j++)
+                for (int j = 0; j < 6; j++)
                 {
                     Container cont = new Container(10, CargoType.Cargo.Normal);
                     row.Stacks[0].Containers.Add(cont);
