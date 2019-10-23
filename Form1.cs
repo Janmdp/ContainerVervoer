@@ -23,7 +23,7 @@ namespace ContainerVervoer
         {
             ship.Initialize();
             start(ship);
-            MessageBox.Show($"The ship contains {ship.Rows[0].Stacks[0].Containers.Count} containers");
+            MessageBox.Show($"The ship contains {ship.Rows[0][0].Count} containers");
         }
 
         public void start(Ship ship)

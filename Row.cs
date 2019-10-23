@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace ContainerVervoer
 {
-    public class Row
+    public class Row : List<Stack>
     {
         //fields
-        private List<Stack> stacks = new List<Stack>();
         private int length;
 
         //methods
@@ -19,7 +18,6 @@ namespace ContainerVervoer
         }
 
         //properties
-        public List<Stack> Stacks { get => stacks; set => stacks = value;}
         public int Length { get => length;}
     }
 }

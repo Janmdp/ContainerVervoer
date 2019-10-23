@@ -3,31 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static ContainerVervoer.CargoType.Cargo;
 
 namespace ContainerVervoer
 {
-    public class Stack
+    public class Stack : List<Container>
     {
         //fields
-        private List<Container> containers = new List<Container>();
         private int maxHeight;
-        private int weight;
+        private bool cooled;
 
         //constructor
-        public Stack(int maxHeight, int weight)
+        public Stack(int maxHeight, bool cooled)
         {
             this.maxHeight = maxHeight;
-            this.weight = weight;
+            this.cooled = cooled;
         }
         //properties
-        public List<Container> Containers { get => containers; set => containers = value;}
-        public int MaxHeight { get => maxHeight;}
-        public int Weight { get => weight; set => weight = value;}
+        public int MaxHeight { get => maxHeight; }
+        public bool Cooled { get => cooled; }
 
         //methods
         public bool checkHeight()
         {
-            if (this.containers.Count == this.maxHeight)
+            if (this.Count == this.maxHeight)
             {
                 return false;
             }
@@ -40,9 +39,9 @@ namespace ContainerVervoer
         public bool checkWeight(Container container)
         {
             int weightonlowest = 0;
-            foreach (Container _container in this.containers )
+            for (int i = 1; i < this.Count; i++)
             {
-                weightonlowest = weightonlowest + _container.Weight;
+                weightonlowest = weightonlowest + this[i].Weight;
             }
 
             if (weightonlowest + container.Weight >= 120000)
@@ -55,9 +54,9 @@ namespace ContainerVervoer
             }
         }
 
-        public bool checkValuable(Container _container)
+        public bool checkValuable()
         {
-            if (this.containers[containers.Count].CargoType == CargoType.Cargo.Valuable)
+            if (this[this.Count - 1].CargoType  == Valuable)
             {
                 return false;
             }
@@ -67,16 +66,24 @@ namespace ContainerVervoer
             }
         }
 
-        public bool checkCoolable(Row row)
+        public bool checkCoolable(Container _container)
         {
-            if (row.Stacks[0] == this)
+            if (_container.CargoType == Coolable)
             {
-                return true;
+                if (this.cooled)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
             else
             {
-                return false;
+                return true;
             }
+            
         }
     }
 }

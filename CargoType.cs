@@ -14,6 +14,7 @@ namespace ContainerVervoer
             Valuable = 2,
             Coolable = 3,
             
+
         };
 
     }

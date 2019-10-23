@@ -15,6 +15,7 @@ namespace ContainerVervoer
         private int maxweight;
         private int weight;
         private List<Row> rows = new List<Row>();
+        private List<Container> containers = new List<Container>();
         
         //constructor
         public Ship(int width, int height, int length, int maxweight)
@@ -40,15 +41,15 @@ namespace ContainerVervoer
                 Row row = new Row(this.length);
                 for (int j = 0; j < length; j++)
                 {
-                    Stack stack = new Stack(this.height, 0);
-                    row.Stacks.Add(stack);
+                    Stack stack = new Stack(this.height,  false);
+                    row.Add(stack);
                     
                 }
 
-                for (int j = 0; j < 6; j++)
+                for (int j = 0; j < 8; j++)
                 {
                     Container cont = new Container(10, CargoType.Cargo.Normal);
-                    row.Stacks[0].Containers.Add(cont);
+                    row[0].Add(cont);
                 }
                 Rows.Add(row);
                 
