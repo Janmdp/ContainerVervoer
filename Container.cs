@@ -12,39 +12,36 @@ namespace ContainerVervoer
     public class Container
     {
         //fields
-
         private int weight;
-
-        private int weightOnTop;
-
-        private int maxWeightOnTop;
-
         private CargoType.Cargo cargoType;
+        private int id;
+        private static int nextId = 1;
 
+        //constructor
         public Container(int weight, CargoType.Cargo cargoType)
         {
-            this.weight = weight + 4000;
-            this.cargoType = cargoType;
-            if ((int)cargoType == 3)
+            if (weight == 0)
             {
-                this.maxWeightOnTop = 0;
+                this.weight = 4000;
             }
             else
             {
-                this.maxWeightOnTop = 120000;
+                this.weight = weight;
             }
-            
+            this.cargoType = cargoType;
+            this.id = nextId;
+            nextId++;
         }
-       
-        //constructor
-        
-        //properties
-        
-        public int Weight { get => weight; set => weight = value; }
-        public int WeightOnTop { get => weightOnTop; set => weightOnTop = value; }
-        public int MaxWeightOnTop { get => maxWeightOnTop;}
-        public CargoType.Cargo CargoType { get => cargoType; set => cargoType = value; }
-        //methods
 
+        //properties
+        public int Weight { get => weight; set => weight = value; }
+        public CargoType.Cargo CargoType { get => cargoType; set => cargoType = value; }
+        public int Id { get => id; }
+        
+        //methods
+        public override string ToString()
+        {
+            return $"Container {id}, {CargoType.ToString()}";
+        }
     }
 }

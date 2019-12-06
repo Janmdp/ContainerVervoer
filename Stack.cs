@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,19 +12,44 @@ namespace ContainerVervoer
     {
         //fields
         private int maxHeight;
-        private bool cooled;
+        private int weight;
+        private int id;
+        private static int nextId = 1;
 
         //constructor
-        public Stack(int maxHeight, bool cooled)
+        public Stack(int maxHeight)
         {
             this.maxHeight = maxHeight;
-            this.cooled = cooled;
+            this.id = nextId;
+            nextId++;
         }
         //properties
         public int MaxHeight { get => maxHeight; }
-        public bool Cooled { get => cooled; }
-
+        public int Weight { get => weight; }
+        public int Id { get => id; }
         //methods
+        public void UpdateWeight()
+        {
+            this.weight = 0;
+            foreach (Container container in this )
+            {
+                this.weight = this.weight + container.Weight;
+            }
+            
+        }
+        public bool AddContainer(Container container)
+        {
+            if (checkHeight() && checkValuable() && checkWeight(container))
+            {
+                this.Add(container);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+       
         public bool checkHeight()
         {
             if (this.Count == this.maxHeight)
@@ -56,9 +82,16 @@ namespace ContainerVervoer
 
         public bool checkValuable()
         {
-            if (this[this.Count - 1].CargoType  == Valuable)
+            if (this.Count != 0)
             {
-                return false;
+                if (this[this.Count - 1].CargoType == Valuable)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
             }
             else
             {
@@ -66,24 +99,9 @@ namespace ContainerVervoer
             }
         }
 
-        public bool checkCoolable(Container _container)
+        public override string ToString()
         {
-            if (_container.CargoType == Coolable)
-            {
-                if (this.cooled)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            else
-            {
-                return true;
-            }
-            
+            return $"Stack {id}";
         }
     }
 }

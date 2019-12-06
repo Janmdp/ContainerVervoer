@@ -8,27 +8,84 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Xsl;
 
 namespace ContainerVervoer
 {
     public partial class Form1 : Form
     {
+        private Ship _ship;
         public Form1()
         {
             InitializeComponent();
-        }
-        Ship ship = new Ship(2,3,3,1000);
-        
-        private void Button1_Click(object sender, EventArgs e)
-        {
-            ship.Initialize();
-            start(ship);
-            MessageBox.Show($"The ship contains {ship.Rows[0][0].Count} containers");
+            tabControl1.Appearance = TabAppearance.FlatButtons; tabControl1.ItemSize = new Size(0, 1); tabControl1.SizeMode = TabSizeMode.Fixed;
+            comboBoxCargoType.DataSource = Enum.GetValues(typeof(CargoType.Cargo));
         }
 
-        public void start(Ship ship)
+        private void UpdateInterfaces()
         {
-            Process.Start("chrome.exe", $"https://i872272core.venus.fhict.nl/ContainerVisualizer/index.html?length={ship.Length}&width={ship.Width}");
+            listBoxRows.Items.Clear();
+            listBoxStacks.Items.Clear();
+            listBoxContainers.Items.Clear();
+
+            foreach (Row row in _ship.Rows )
+            {
+                listBoxRows.Items.Add(row.ToString());
+            }
+        }
+        private void buttonCreateShip_Click(object sender, EventArgs e)
+        {
+            int height = (int) numericUpDownHeight.Value;
+            int width = (int) numericUpDownWidth.Value;
+            int length = (int) numericUpDownLength.Value;
+            int maxWeight = (int) numericUpDownMaxWeight.Value;
+            
+            _ship = new Ship(width, height, length, maxWeight);
+            UpdateInterfaces();
+            tabControl1.SelectedIndex = 1;
+        }
+
+        private void buttonAddContainer_Click(object sender, EventArgs e)
+        {
+            Container container = new Container( (int) numericUpDownWeight.Value, (CargoType.Cargo) comboBoxCargoType.SelectedItem);
+            _ship.AddContainer(container);
+            UpdateInterfaces();
+        }
+
+        private void listBoxRows_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            foreach (Row row in _ship.Rows )
+            {
+                if (row.ToString() == listBoxRows.SelectedItem.ToString())
+                {
+                    listBoxStacks.Items.Clear();
+                    foreach (Stack stack in row)
+                    {
+                        listBoxStacks.Items.Add(stack.ToString());
+                    }
+                }
+            }
+        }
+
+        private void listBoxStacks_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            foreach (Row row in _ship.Rows)
+            {
+                if (row.ToString() == listBoxRows.SelectedItem.ToString())
+                {
+                    foreach(Stack stack in row )
+                    {
+                        if (stack.ToString() == listBoxStacks.SelectedItem.ToString())
+                        {
+                            listBoxContainers.Items.Clear();
+                            foreach (Container container in stack)
+                            {
+                                listBoxContainers.Items.Add(container.ToString());
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
