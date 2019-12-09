@@ -59,7 +59,6 @@
     <Compile Include="Row.cs" />
     <Compile Include="Ship.cs" />
     <Compile Include="Stack.cs" />
-    <Compile Include="StringBuilder.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

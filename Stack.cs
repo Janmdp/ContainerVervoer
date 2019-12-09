@@ -31,7 +31,7 @@ namespace ContainerVervoer
         public void UpdateWeight()
         {
             this.weight = 0;
-            foreach (Container container in this )
+            foreach (Container container in this)
             {
                 this.weight = this.weight + container.Weight;
             }
@@ -44,13 +44,33 @@ namespace ContainerVervoer
                 this.Add(container);
                 return true;
             }
+            else if(checkHeight() && !checkValuable() && checkWeight(container))
+            {
+                
+                return this.AddUnderValuable(container);
+            }
             else
             {
                 return false;
             }
         }
-       
-        public bool checkHeight()
+
+        private bool AddUnderValuable(Container container)
+        {
+            if (checkHeight())
+            {
+                int oldIndex = this.Count - 1;
+                Container temp = this[oldIndex];
+                this.RemoveAt(oldIndex);
+                this.Insert(oldIndex, container);
+                if (this.AddContainer(temp))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        private bool checkHeight()
         {
             if (this.Count == this.maxHeight)
             {
@@ -62,7 +82,7 @@ namespace ContainerVervoer
             }
         }
 
-        public bool checkWeight(Container container)
+        private bool checkWeight(Container container)
         {
             int weightonlowest = 0;
             for (int i = 1; i < this.Count; i++)
@@ -80,7 +100,7 @@ namespace ContainerVervoer
             }
         }
 
-        public bool checkValuable()
+        private bool checkValuable()
         {
             if (this.Count != 0)
             {

@@ -48,7 +48,10 @@ namespace ContainerVervoer
         private void buttonAddContainer_Click(object sender, EventArgs e)
         {
             Container container = new Container( (int) numericUpDownWeight.Value, (CargoType.Cargo) comboBoxCargoType.SelectedItem);
-            _ship.AddContainer(container);
+            if (!_ship.AddContainer(container))
+            {
+                MessageBox.Show("Container couldn't be added'");
+            }
             UpdateInterfaces();
         }
 
@@ -56,14 +59,18 @@ namespace ContainerVervoer
         {
             foreach (Row row in _ship.Rows )
             {
-                if (row.ToString() == listBoxRows.SelectedItem.ToString())
+                if (listBoxRows.SelectedItem != null)
                 {
-                    listBoxStacks.Items.Clear();
-                    foreach (Stack stack in row)
+                    if (row.ToString() == listBoxRows.SelectedItem.ToString())
                     {
-                        listBoxStacks.Items.Add(stack.ToString());
+                        listBoxStacks.Items.Clear();
+                        foreach (Stack stack in row)
+                        {
+                            listBoxStacks.Items.Add(stack.ToString());
+                        }
                     }
                 }
+                
             }
         }
 
@@ -75,14 +82,18 @@ namespace ContainerVervoer
                 {
                     foreach(Stack stack in row )
                     {
-                        if (stack.ToString() == listBoxStacks.SelectedItem.ToString())
+                        if (listBoxStacks.SelectedItem != null)
                         {
-                            listBoxContainers.Items.Clear();
-                            foreach (Container container in stack)
+                            if (stack.ToString() == listBoxStacks.SelectedItem.ToString())
                             {
-                                listBoxContainers.Items.Add(container.ToString());
+                                listBoxContainers.Items.Clear();
+                                foreach (Container container in stack)
+                                {
+                                    listBoxContainers.Items.Add(container.ToString());
+                                }
                             }
                         }
+                        
                     }
                 }
             }

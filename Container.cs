@@ -20,14 +20,7 @@ namespace ContainerVervoer
         //constructor
         public Container(int weight, CargoType.Cargo cargoType)
         {
-            if (weight == 0)
-            {
-                this.weight = 4000;
-            }
-            else
-            {
-                this.weight = weight;
-            }
+            this.weight = weight;
             this.cargoType = cargoType;
             this.id = nextId;
             nextId++;

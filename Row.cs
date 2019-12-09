@@ -47,7 +47,7 @@ namespace ContainerVervoer
 
         public bool CheckStacks(Container container)
         {
-            foreach (Stack stack in this)
+            foreach (Stack stack in this.OrderBy(s => s.Weight))
             {
                 if (stack.AddContainer(container))
                 {
@@ -57,25 +57,6 @@ namespace ContainerVervoer
             }
 
             return false;
-        }
-        public bool checkCoolable(Container _container)
-        {
-            if (_container.CargoType is Coolable)
-            {
-                if (this.cooled)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            else
-            {
-                return true;
-            }
-
         }
 
         public override string ToString()

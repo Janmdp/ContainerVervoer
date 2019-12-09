@@ -38,7 +38,7 @@ namespace ContainerVervoer
         public List<Row> Rows { get => rows; set => rows = value;}
         public int Length { get => length;}
         public int Width { get => width;}
-
+        public int MaxWeight { get=> maxweight; }
         //methods
         public void GenerateContents()
         {
@@ -76,41 +76,49 @@ namespace ContainerVervoer
                 this.weight = this.weight + shipRow.Weight;
             }
         }
-        public void AddContainer(Container container)
+        public bool AddContainer(Container container)
         {
             bool isAdded = false;
             if (Weight + container.Weight <= maxweight)
             {
                 foreach (Row row in Rows.OrderBy(r => r.Weight))
                 {
-                    if (container.CargoType is Coolable && row.checkCoolable(container))
+                    if (container.CargoType is Coolable && row.Cooled)
                     {
-                        row.CheckStacks(container);
-                        UpdateWeight();
-                        isAdded = true;
-                        break;
+                        if (row.CheckStacks(container))
+                        {
+                            UpdateWeight();
+                            isAdded = true;
+                            return true;
+                        }
+                        
                     }
 
                     if (container.CargoType is Normal || container.CargoType is Valuable)
                     {
-                        row.CheckStacks(container);
-                        UpdateWeight();
-                        isAdded = true;
-                        break;
+                        if (row.CheckStacks(container))
+                        {
+                            UpdateWeight();
+                            isAdded = true;
+                            return true;
+                            
+                        }
+                        
                     }
 
                 }
 
                 if (!isAdded)
                 {
-                    MessageBox.Show("Container couldn't be added'");
+                    return false;
                 }
             }
             else
             {
-                MessageBox.Show("Container couldn't be added'");
+                return false;
             }
 
+            return false;
         }
     }
 }
