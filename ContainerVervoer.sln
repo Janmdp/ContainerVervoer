@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContainerVervoer", "Contain
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContainerVervoerTests1", "..\ContainerVervoerTests1\ContainerVervoerTests1.csproj", "{70423FD1-A41B-4950-B4E3-52D9F8913F75}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContainerVervoerClassLibrary", "..\ContainerVervoerClassLibrary\ContainerVervoerClassLibrary.csproj", "{296C79A6-D4F3-43BA-8022-FB65634CD0D9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{70423FD1-A41B-4950-B4E3-52D9F8913F75}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{70423FD1-A41B-4950-B4E3-52D9F8913F75}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{70423FD1-A41B-4950-B4E3-52D9F8913F75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{296C79A6-D4F3-43BA-8022-FB65634CD0D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{296C79A6-D4F3-43BA-8022-FB65634CD0D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{296C79A6-D4F3-43BA-8022-FB65634CD0D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{296C79A6-D4F3-43BA-8022-FB65634CD0D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

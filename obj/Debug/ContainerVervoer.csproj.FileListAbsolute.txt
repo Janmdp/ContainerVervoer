@@ -7,3 +7,6 @@ C:\Users\janei\source\repos\ContainerVervoer\obj\Debug\ContainerVervoer.Properti
 C:\Users\janei\source\repos\ContainerVervoer\obj\Debug\ContainerVervoer.csproj.GenerateResource.cache
 C:\Users\janei\source\repos\ContainerVervoer\obj\Debug\ContainerVervoer.exe
 C:\Users\janei\source\repos\ContainerVervoer\obj\Debug\ContainerVervoer.pdb
+C:\Users\janei\source\repos\ContainerVervoer\bin\Debug\ContainerVervoerClassLibrary.dll
+C:\Users\janei\source\repos\ContainerVervoer\bin\Debug\ContainerVervoerClassLibrary.pdb
+C:\Users\janei\source\repos\ContainerVervoer\obj\Debug\ContainerVervoer.csproj.CopyComplete
