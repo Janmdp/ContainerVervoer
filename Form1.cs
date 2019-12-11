@@ -1,20 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Xsl;
 
 namespace ContainerVervoer
 {
     public partial class Form1 : Form
     {
         private Ship _ship;
+
         public Form1()
         {
             InitializeComponent();
@@ -28,18 +21,19 @@ namespace ContainerVervoer
             listBoxStacks.Items.Clear();
             listBoxContainers.Items.Clear();
 
-            foreach (Row row in _ship.Rows )
+            foreach (Row row in _ship.Rows)
             {
                 listBoxRows.Items.Add(row.ToString());
             }
         }
+
         private void buttonCreateShip_Click(object sender, EventArgs e)
         {
-            int height = (int) numericUpDownHeight.Value;
-            int width = (int) numericUpDownWidth.Value;
-            int length = (int) numericUpDownLength.Value;
-            int maxWeight = (int) numericUpDownMaxWeight.Value;
-            
+            int height = (int)numericUpDownHeight.Value;
+            int width = (int)numericUpDownWidth.Value;
+            int length = (int)numericUpDownLength.Value;
+            int maxWeight = (int)numericUpDownMaxWeight.Value;
+
             _ship = new Ship(width, height, length, maxWeight);
             UpdateInterfaces();
             tabControl1.SelectedIndex = 1;
@@ -47,7 +41,7 @@ namespace ContainerVervoer
 
         private void buttonAddContainer_Click(object sender, EventArgs e)
         {
-            Container container = new Container( (int) numericUpDownWeight.Value, (CargoType.Cargo) comboBoxCargoType.SelectedItem);
+            Container container = new Container((int)numericUpDownWeight.Value, (CargoType.Cargo)comboBoxCargoType.SelectedItem);
             if (!_ship.AddContainer(container))
             {
                 MessageBox.Show("Container couldn't be added'");
@@ -57,7 +51,7 @@ namespace ContainerVervoer
 
         private void listBoxRows_SelectedIndexChanged(object sender, EventArgs e)
         {
-            foreach (Row row in _ship.Rows )
+            foreach (Row row in _ship.Rows)
             {
                 if (listBoxRows.SelectedItem != null)
                 {
@@ -70,7 +64,6 @@ namespace ContainerVervoer
                         }
                     }
                 }
-                
             }
         }
 
@@ -80,7 +73,7 @@ namespace ContainerVervoer
             {
                 if (row.ToString() == listBoxRows.SelectedItem.ToString())
                 {
-                    foreach(Stack stack in row )
+                    foreach (Stack stack in row)
                     {
                         if (listBoxStacks.SelectedItem != null)
                         {
@@ -93,7 +86,6 @@ namespace ContainerVervoer
                                 }
                             }
                         }
-                        
                     }
                 }
             }

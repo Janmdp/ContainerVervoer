@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ContainerVervoer
+﻿namespace ContainerVervoer
 {
     public class CargoType
     {
@@ -13,8 +7,6 @@ namespace ContainerVervoer
             Normal = 1,
             Valuable = 2,
             Coolable = 3,
-
         };
-
     }
 }

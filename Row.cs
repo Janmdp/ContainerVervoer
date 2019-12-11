@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static ContainerVervoer.CargoType.Cargo;
 
 namespace ContainerVervoer
 {
@@ -12,9 +8,11 @@ namespace ContainerVervoer
     {
         //fields
         private bool cooled;
+
         private int weight;
         private int id;
         private static int nextId = 1;
+
         //methods
         public Row(bool cooled)
         {
@@ -24,32 +22,40 @@ namespace ContainerVervoer
         }
 
         //properties
-       public bool Cooled { get => cooled; }
-       public int Weight { get => weight; }
+        public bool Cooled { get => cooled; }
+
+        public int Weight { get => weight; }
+        public int Id { get => id; }
+
         //methods
+        //Update the weight of the row
         public void UpdateWeight()
         {
             this.weight = 0;
-            foreach (Stack stack in this )
+            foreach (Stack stack in this)
             {
                 this.weight = this.weight + stack.Weight;
             }
         }
+
+        //Generate stacks based on the given parameters
         public void GenerateStacks(int amount, int height)
         {
             for (int i = 0; i < amount; i++)
             {
-               Stack stack = new Stack(height);
-               this.Add(stack);
-
+                Stack stack = new Stack(height);
+                this.Add(stack);
             }
         }
 
-        public bool CheckStacks(Container container)
+        //Check if there are stacks the container can be added to and adds the container
+        public bool CheckStacks(Container container, Ship ship)
         {
+            //Loop through the stacks based on weight
             foreach (Stack stack in this.OrderBy(s => s.Weight))
             {
-                if (stack.AddContainer(container))
+                //Try to add the container to a stack
+                if (stack.AddContainer(ship, this, container))
                 {
                     MessageBox.Show($"Container has been added to Stack {stack.Id}");
                     return true;

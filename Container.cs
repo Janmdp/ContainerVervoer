@@ -1,18 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-
-
-namespace ContainerVervoer
+﻿namespace ContainerVervoer
 {
     public class Container
     {
         //fields
         private int weight;
+
         private CargoType.Cargo cargoType;
         private int id;
         private static int nextId = 1;
@@ -28,9 +20,10 @@ namespace ContainerVervoer
 
         //properties
         public int Weight { get => weight; set => weight = value; }
+
         public CargoType.Cargo CargoType { get => cargoType; set => cargoType = value; }
         public int Id { get => id; }
-        
+
         //methods
         public override string ToString()
         {

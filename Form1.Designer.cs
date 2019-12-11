@@ -40,14 +40,14 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.listBoxRows = new System.Windows.Forms.ListBox();
-            this.listBoxStacks = new System.Windows.Forms.ListBox();
-            this.listBoxContainers = new System.Windows.Forms.ListBox();
-            this.numericUpDownWeight = new System.Windows.Forms.NumericUpDown();
-            this.label5 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.buttonAddContainer = new System.Windows.Forms.Button();
             this.comboBoxCargoType = new System.Windows.Forms.ComboBox();
+            this.buttonAddContainer = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.numericUpDownWeight = new System.Windows.Forms.NumericUpDown();
+            this.listBoxContainers = new System.Windows.Forms.ListBox();
+            this.listBoxStacks = new System.Windows.Forms.ListBox();
+            this.listBoxRows = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownHeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLength)).BeginInit();
@@ -55,8 +55,8 @@
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWeight)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWeight)).BeginInit();
             this.SuspendLayout();
             // 
             // numericUpDownHeight
@@ -196,34 +196,45 @@
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // listBoxRows
+            // groupBox1
             // 
-            this.listBoxRows.FormattingEnabled = true;
-            this.listBoxRows.ItemHeight = 16;
-            this.listBoxRows.Location = new System.Drawing.Point(227, 45);
-            this.listBoxRows.Name = "listBoxRows";
-            this.listBoxRows.Size = new System.Drawing.Size(120, 244);
-            this.listBoxRows.TabIndex = 18;
-            this.listBoxRows.SelectedIndexChanged += new System.EventHandler(this.listBoxRows_SelectedIndexChanged);
+            this.groupBox1.Controls.Add(this.comboBoxCargoType);
+            this.groupBox1.Controls.Add(this.buttonAddContainer);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.numericUpDownWeight);
+            this.groupBox1.Location = new System.Drawing.Point(6, 45);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(200, 209);
+            this.groupBox1.TabIndex = 27;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Create Container";
             // 
-            // listBoxStacks
+            // comboBoxCargoType
             // 
-            this.listBoxStacks.FormattingEnabled = true;
-            this.listBoxStacks.ItemHeight = 16;
-            this.listBoxStacks.Location = new System.Drawing.Point(390, 45);
-            this.listBoxStacks.Name = "listBoxStacks";
-            this.listBoxStacks.Size = new System.Drawing.Size(120, 244);
-            this.listBoxStacks.TabIndex = 19;
-            this.listBoxStacks.SelectedIndexChanged += new System.EventHandler(this.listBoxStacks_SelectedIndexChanged);
+            this.comboBoxCargoType.FormattingEnabled = true;
+            this.comboBoxCargoType.Location = new System.Drawing.Point(19, 111);
+            this.comboBoxCargoType.Name = "comboBoxCargoType";
+            this.comboBoxCargoType.Size = new System.Drawing.Size(121, 24);
+            this.comboBoxCargoType.TabIndex = 28;
             // 
-            // listBoxContainers
+            // buttonAddContainer
             // 
-            this.listBoxContainers.FormattingEnabled = true;
-            this.listBoxContainers.ItemHeight = 16;
-            this.listBoxContainers.Location = new System.Drawing.Point(552, 45);
-            this.listBoxContainers.Name = "listBoxContainers";
-            this.listBoxContainers.Size = new System.Drawing.Size(120, 244);
-            this.listBoxContainers.TabIndex = 20;
+            this.buttonAddContainer.Location = new System.Drawing.Point(19, 160);
+            this.buttonAddContainer.Name = "buttonAddContainer";
+            this.buttonAddContainer.Size = new System.Drawing.Size(120, 23);
+            this.buttonAddContainer.TabIndex = 26;
+            this.buttonAddContainer.Text = "Add Container";
+            this.buttonAddContainer.UseVisualStyleBackColor = true;
+            this.buttonAddContainer.Click += new System.EventHandler(this.buttonAddContainer_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(19, 40);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(52, 17);
+            this.label5.TabIndex = 25;
+            this.label5.Text = "Weight";
             // 
             // numericUpDownWeight
             // 
@@ -252,45 +263,34 @@
             0,
             0});
             // 
-            // label5
+            // listBoxContainers
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(19, 40);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(52, 17);
-            this.label5.TabIndex = 25;
-            this.label5.Text = "Weight";
+            this.listBoxContainers.FormattingEnabled = true;
+            this.listBoxContainers.ItemHeight = 16;
+            this.listBoxContainers.Location = new System.Drawing.Point(552, 45);
+            this.listBoxContainers.Name = "listBoxContainers";
+            this.listBoxContainers.Size = new System.Drawing.Size(189, 244);
+            this.listBoxContainers.TabIndex = 20;
             // 
-            // groupBox1
+            // listBoxStacks
             // 
-            this.groupBox1.Controls.Add(this.comboBoxCargoType);
-            this.groupBox1.Controls.Add(this.buttonAddContainer);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.numericUpDownWeight);
-            this.groupBox1.Location = new System.Drawing.Point(6, 45);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 209);
-            this.groupBox1.TabIndex = 27;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Create Container";
+            this.listBoxStacks.FormattingEnabled = true;
+            this.listBoxStacks.ItemHeight = 16;
+            this.listBoxStacks.Location = new System.Drawing.Point(390, 45);
+            this.listBoxStacks.Name = "listBoxStacks";
+            this.listBoxStacks.Size = new System.Drawing.Size(120, 244);
+            this.listBoxStacks.TabIndex = 19;
+            this.listBoxStacks.SelectedIndexChanged += new System.EventHandler(this.listBoxStacks_SelectedIndexChanged);
             // 
-            // buttonAddContainer
+            // listBoxRows
             // 
-            this.buttonAddContainer.Location = new System.Drawing.Point(19, 160);
-            this.buttonAddContainer.Name = "buttonAddContainer";
-            this.buttonAddContainer.Size = new System.Drawing.Size(120, 23);
-            this.buttonAddContainer.TabIndex = 26;
-            this.buttonAddContainer.Text = "Add Container";
-            this.buttonAddContainer.UseVisualStyleBackColor = true;
-            this.buttonAddContainer.Click += new System.EventHandler(this.buttonAddContainer_Click);
-            // 
-            // comboBoxCargoType
-            // 
-            this.comboBoxCargoType.FormattingEnabled = true;
-            this.comboBoxCargoType.Location = new System.Drawing.Point(19, 111);
-            this.comboBoxCargoType.Name = "comboBoxCargoType";
-            this.comboBoxCargoType.Size = new System.Drawing.Size(121, 24);
-            this.comboBoxCargoType.TabIndex = 28;
+            this.listBoxRows.FormattingEnabled = true;
+            this.listBoxRows.ItemHeight = 16;
+            this.listBoxRows.Location = new System.Drawing.Point(227, 45);
+            this.listBoxRows.Name = "listBoxRows";
+            this.listBoxRows.Size = new System.Drawing.Size(120, 244);
+            this.listBoxRows.TabIndex = 18;
+            this.listBoxRows.SelectedIndexChanged += new System.EventHandler(this.listBoxRows_SelectedIndexChanged);
             // 
             // Form1
             // 
@@ -308,9 +308,9 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWeight)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWeight)).EndInit();
             this.ResumeLayout(false);
 
         }
