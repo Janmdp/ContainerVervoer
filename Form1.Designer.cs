@@ -245,7 +245,7 @@
             0});
             this.numericUpDownWeight.Location = new System.Drawing.Point(19, 63);
             this.numericUpDownWeight.Maximum = new decimal(new int[] {
-            120000,
+            30000,
             0,
             0,
             0});
