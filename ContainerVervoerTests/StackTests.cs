@@ -1,7 +1,8 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using ContainerVervoerClassLibrary;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using static ContainerVervoerClassLibrary.CargoType.Cargo;
-using ContainerVervoerClassLibrary;
-namespace ContainerVervoer.Tests
+
+namespace ContainerVervoerTests1
 {
     [TestClass()]
     public class StackTests
