@@ -60,6 +60,26 @@ namespace ContainerVervoerClassLibrary
             }
         }
 
+        //Returns the % of the maxweight is used
+        public double GetUsedWeight()
+        {
+            double toReturn = ( (double) weight / (double) maxweight) * 100;
+            return toReturn;
+        }
+
+        //Checks if 50% of the max weight is used
+        public bool CheckWeight()
+        {
+            if ((double) weight / (double) maxweight * 100 >= 50)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         //Updates the weight of the ship
         public void UpdateWeight()
         {

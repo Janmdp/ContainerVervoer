@@ -6,3 +6,11 @@ C:\Users\janei\source\repos\ContainerVervoerClassLibrary\obj\Debug\netstandard2.
 C:\Users\janei\source\repos\ContainerVervoerClassLibrary\obj\Debug\netstandard2.0\ContainerVervoerClassLibrary.AssemblyInfo.cs
 C:\Users\janei\source\repos\ContainerVervoerClassLibrary\obj\Debug\netstandard2.0\ContainerVervoerClassLibrary.dll
 C:\Users\janei\source\repos\ContainerVervoerClassLibrary\obj\Debug\netstandard2.0\ContainerVervoerClassLibrary.pdb
+C:\Users\janei\Source\Repos\ContainerVervoerGit\ContainerVervoerClassLibrary\bin\Debug\netstandard2.0\ContainerVervoerClassLibrary.deps.json
+C:\Users\janei\Source\Repos\ContainerVervoerGit\ContainerVervoerClassLibrary\bin\Debug\netstandard2.0\ContainerVervoerClassLibrary.dll
+C:\Users\janei\Source\Repos\ContainerVervoerGit\ContainerVervoerClassLibrary\bin\Debug\netstandard2.0\ContainerVervoerClassLibrary.pdb
+C:\Users\janei\Source\Repos\ContainerVervoerGit\ContainerVervoerClassLibrary\obj\Debug\netstandard2.0\ContainerVervoerClassLibrary.csprojAssemblyReference.cache
+C:\Users\janei\Source\Repos\ContainerVervoerGit\ContainerVervoerClassLibrary\obj\Debug\netstandard2.0\ContainerVervoerClassLibrary.AssemblyInfoInputs.cache
+C:\Users\janei\Source\Repos\ContainerVervoerGit\ContainerVervoerClassLibrary\obj\Debug\netstandard2.0\ContainerVervoerClassLibrary.AssemblyInfo.cs
+C:\Users\janei\Source\Repos\ContainerVervoerGit\ContainerVervoerClassLibrary\obj\Debug\netstandard2.0\ContainerVervoerClassLibrary.dll
+C:\Users\janei\Source\Repos\ContainerVervoerGit\ContainerVervoerClassLibrary\obj\Debug\netstandard2.0\ContainerVervoerClassLibrary.pdb

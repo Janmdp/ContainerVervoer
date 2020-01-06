@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace ContainerVervoerClassLibrary
@@ -47,17 +48,129 @@ namespace ContainerVervoerClassLibrary
             }
         }
 
-        //Check if there are stacks the container can be added to and adds the container
-        public bool CheckStacks(Container container, Ship ship)
+        private List<Stack> ChooseSide(Ship ship)
         {
+            if (this.Count % 2 == 0)
+            {
+                //even
+                return ChooseSideEven(ship);
+            }
+            else
+            {
+                //odd
+                //Math.Round(test, MidpointRounding.AwayFromZero)
+                decimal middle = this.Count / (decimal) 2;
+                return ChooseSideOdd(ship,Math.Round(middle, MidpointRounding.AwayFromZero));
+            }
+            
+        }
+
+        private List<Stack> ChooseSideOdd(Ship ship, decimal middle)
+        {
+            List<Stack> side = new List<Stack>();
+            int left = 0;
+            int right = 0;
+            foreach (Row row in ship.Rows)
+            {
+                for (int i = 0; i < (middle - 1); i++)
+                {
+                    left = left + row[i].Weight;
+                }
+                
+                for (int i = (int)middle; i < row.Count; i++)
+                {
+                    right = right + row[i].Weight;
+                }
+            }
+            
+
+            if (left < right)
+            {
+                for (int i = 0; i < (middle - 1); i++)
+                {
+                    side.Add(this[i]);
+                }
+
+                return side;
+            }
+            else if (left > right)
+            {
+                for (int i = (int) middle; i < this.Count; i++)
+                {
+                    side.Add(this[i]);
+                }
+
+                return side;
+            }
+            else
+            {
+                return this;
+            }
+        }
+        private List<Stack> ChooseSideEven(Ship ship)
+        {
+            List<Stack> side = new List<Stack>();
+            int left = 0;
+            int right = 0;
+
+            foreach (Row row in ship.Rows)
+            {
+                for (int i = 0; i < (row.Count / 2); i++)
+                {
+                    left = left + row[i].Weight;
+                }
+                
+                for (int i = (row.Count / 2); i < row.Count; i++)
+                {
+                    right = right + row[i].Weight;
+                }
+            }
+            
+            
+
+            if (left < right)
+            {
+                for (int i = 0; i < (this.Count / 2); i++)
+                {
+                    side.Add(this[i]);
+                }
+
+                return side;
+            }
+            else if (left > right)
+            {
+                for (int i = (this.Count / 2); i < this.Count; i++)
+                {
+                   side.Add(this[i]);
+                }
+
+                return side;
+            }
+            else
+            {
+                return this;
+            }
+
+        }
+
+        //Check if there are stacks the container can be added to and adds the container
+            public bool CheckStacks(Container container, Ship ship) {
             //Loop through the stacks based on weight
             foreach (Stack stack in this.OrderBy(s => s.Weight))
             {
-                //Try to add the container to a stack
-                if (stack.AddContainer(ship, this, container))
+                foreach (Stack stacks in this.ChooseSide(ship) )
                 {
-                    return true;
+                    if (stack.Id == stacks.Id)
+                    {
+                        //Try to add the container to a stack
+                        if (stack.AddContainer(ship, this, container))
+                        {
+                            return true;
+                        }
+                    }
                 }
+                
+                
             }
 
             return false;

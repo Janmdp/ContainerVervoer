@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using ContainerVervoerClassLibrary;
@@ -25,6 +26,17 @@ namespace ContainerVervoer
             foreach (Row row in _ship.Rows)
             {
                 listBoxRows.Items.Add(row.ToString());
+            }
+
+            if (_ship.CheckWeight())
+            {
+                labelWeight.ForeColor = Color.Green;
+                labelWeight.Text = $"{_ship.GetUsedWeight()}% of the maximum weight of the ship is used";
+            }
+            else
+            {
+                labelWeight.ForeColor = Color.Red;
+                labelWeight.Text = $"{_ship.GetUsedWeight()}% of the maximum weight of the ship is used";
             }
         }
 
@@ -90,6 +102,37 @@ namespace ContainerVervoer
                     }
                 }
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //Ship ship = new Ship(5, 1, 1, 10000000);
+            //Container cont = new Container(100, CargoType.Cargo.Normal);
+            //Container cont2 = new Container(100, CargoType.Cargo.Normal);
+            //Container cont3 = new Container(100, CargoType.Cargo.Normal);
+            //Container cont4 = new Container(100, CargoType.Cargo.Normal);
+            //ship.AddContainer(cont);
+            //ship.AddContainer(cont2);
+            //ship.AddContainer(cont3);
+            //ship.AddContainer(cont4);
+            //foreach (Row row in ship.Rows)
+            //{
+            //    foreach (Stack stack in row)
+            //    {
+            //        foreach (Container container in stack)
+            //        {
+            //            MessageBox.Show($"{row.Id}, {stack.Id}, {container.Id}, {container.Weight}");
+            //        }
+            //    }
+            //}
+
+            //int left = 0;
+            //int right = 0;
+            //List<Stack> test = ship.Rows[0].ChooseSide();
+            //foreach (Stack stack in test)
+            //{
+            //    MessageBox.Show($"{stack.Id}");
+            //}
         }
     }
 }

@@ -40,6 +40,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.labelWeight = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.comboBoxCargoType = new System.Windows.Forms.ComboBox();
             this.buttonAddContainer = new System.Windows.Forms.Button();
@@ -184,6 +185,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.labelWeight);
             this.tabPage2.Controls.Add(this.groupBox1);
             this.tabPage2.Controls.Add(this.listBoxContainers);
             this.tabPage2.Controls.Add(this.listBoxStacks);
@@ -196,13 +198,23 @@
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // labelWeight
+            // 
+            this.labelWeight.AutoSize = true;
+            this.labelWeight.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelWeight.Location = new System.Drawing.Point(19, 20);
+            this.labelWeight.Name = "labelWeight";
+            this.labelWeight.Size = new System.Drawing.Size(306, 32);
+            this.labelWeight.TabIndex = 28;
+            this.labelWeight.Text = "0% of max weight used";
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.comboBoxCargoType);
             this.groupBox1.Controls.Add(this.buttonAddContainer);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.numericUpDownWeight);
-            this.groupBox1.Location = new System.Drawing.Point(6, 45);
+            this.groupBox1.Location = new System.Drawing.Point(6, 67);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(200, 209);
             this.groupBox1.TabIndex = 27;
@@ -267,7 +279,7 @@
             // 
             this.listBoxContainers.FormattingEnabled = true;
             this.listBoxContainers.ItemHeight = 16;
-            this.listBoxContainers.Location = new System.Drawing.Point(552, 45);
+            this.listBoxContainers.Location = new System.Drawing.Point(552, 67);
             this.listBoxContainers.Name = "listBoxContainers";
             this.listBoxContainers.Size = new System.Drawing.Size(189, 244);
             this.listBoxContainers.TabIndex = 20;
@@ -276,7 +288,7 @@
             // 
             this.listBoxStacks.FormattingEnabled = true;
             this.listBoxStacks.ItemHeight = 16;
-            this.listBoxStacks.Location = new System.Drawing.Point(390, 45);
+            this.listBoxStacks.Location = new System.Drawing.Point(390, 67);
             this.listBoxStacks.Name = "listBoxStacks";
             this.listBoxStacks.Size = new System.Drawing.Size(120, 244);
             this.listBoxStacks.TabIndex = 19;
@@ -286,7 +298,7 @@
             // 
             this.listBoxRows.FormattingEnabled = true;
             this.listBoxRows.ItemHeight = 16;
-            this.listBoxRows.Location = new System.Drawing.Point(227, 45);
+            this.listBoxRows.Location = new System.Drawing.Point(227, 67);
             this.listBoxRows.Name = "listBoxRows";
             this.listBoxRows.Size = new System.Drawing.Size(120, 244);
             this.listBoxRows.TabIndex = 18;
@@ -308,6 +320,7 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWeight)).EndInit();
@@ -337,6 +350,7 @@
         private System.Windows.Forms.ListBox listBoxStacks;
         private System.Windows.Forms.ListBox listBoxRows;
         private System.Windows.Forms.ComboBox comboBoxCargoType;
+        private System.Windows.Forms.Label labelWeight;
     }
 }
 

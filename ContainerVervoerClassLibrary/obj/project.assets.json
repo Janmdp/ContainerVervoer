@@ -185,11 +185,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\janei\\Source\\Repos\\ContainerVervoerGitTest\\ContainerVervoerClassLibrary\\ContainerVervoerClassLibrary.csproj",
+      "projectUniqueName": "C:\\Users\\janei\\Source\\Repos\\ContainerVervoerGit\\ContainerVervoerClassLibrary\\ContainerVervoerClassLibrary.csproj",
       "projectName": "ContainerVervoerClassLibrary",
-      "projectPath": "C:\\Users\\janei\\Source\\Repos\\ContainerVervoerGitTest\\ContainerVervoerClassLibrary\\ContainerVervoerClassLibrary.csproj",
+      "projectPath": "C:\\Users\\janei\\Source\\Repos\\ContainerVervoerGit\\ContainerVervoerClassLibrary\\ContainerVervoerClassLibrary.csproj",
       "packagesPath": "C:\\Users\\janei\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\janei\\Source\\Repos\\ContainerVervoerGitTest\\ContainerVervoerClassLibrary\\obj\\",
+      "outputPath": "C:\\Users\\janei\\Source\\Repos\\ContainerVervoerGit\\ContainerVervoerClassLibrary\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

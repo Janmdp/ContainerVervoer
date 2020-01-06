@@ -109,5 +109,28 @@ namespace ContainerVervoerTests1
             Assert.IsFalse(row.CheckStacks(container2, ship));
             Assert.AreEqual(1, row[0].Count);
         }
+
+        [TestMethod]
+        public void ChooseSideTest()
+        {
+            int left = 0;
+            int right = 0;
+            Ship ship = new Ship(1, 1, 1, 1000000);
+            ship.Rows.Clear();
+            Row row = new Row(false);
+            Stack stack1 = new Stack(3);
+            Stack stack2 = new Stack(3);
+            Container container = new Container(100, Normal);
+            Container container2 = new Container(150, Normal);
+            stack1.Add(container);
+            stack2.Add(container2);
+            row.Add(stack1);
+            row.Add(stack2);
+            ship.Rows.Add(row);
+            ship.UpdateWeight();
+            ship.Rows[0].ChooseSideEven(left, right);
+            Assert.AreEqual(100, left);
+            Assert.AreEqual(150, right);
+        }
     }
 }
