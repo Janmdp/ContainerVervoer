@@ -111,26 +111,68 @@ namespace ContainerVervoerTests1
         }
 
         [TestMethod]
-        public void ChooseSideTest()
+        //The ship usually adds a container to the lightest stack which in this case is the empty stack 2 however when the ship
+        //checks the weight of both sides of the ship it sees that the left side is heavier than the right side and will only 
+        //attempt to add the container to the right side of the ship
+        public void ChooseSideTestTrue()
         {
-            int left = 0;
-            int right = 0;
             Ship ship = new Ship(1, 1, 1, 1000000);
             ship.Rows.Clear();
             Row row = new Row(false);
             Stack stack1 = new Stack(3);
             Stack stack2 = new Stack(3);
-            Container container = new Container(100, Normal);
-            Container container2 = new Container(150, Normal);
-            stack1.Add(container);
-            stack2.Add(container2);
+            Stack stack3 = new Stack(3);
+            Stack stack4 = new Stack(3);
+            Container container1 = new Container(500, Normal);
+            Container container2 = new Container(100, Normal);
+            Container container3 = new Container(100, Normal);
+            Container container4 = new Container(100, Normal);
+            stack1.Add(container1);
+            stack3.Add(container2);
+            stack4.Add(container3);
             row.Add(stack1);
             row.Add(stack2);
+            row.Add(stack3);
+            row.Add(stack4);
             ship.Rows.Add(row);
             ship.UpdateWeight();
-            ship.Rows[0].ChooseSideEven(left, right);
-            Assert.AreEqual(100, left);
-            Assert.AreEqual(150, right);
+            Assert.AreEqual(0, ship.Rows[0][1].Count);
+            Assert.AreEqual(1, ship.Rows[0][2].Count);
+            Assert.IsTrue(ship.AddContainer(container3));
+            Assert.AreEqual(0, ship.Rows[0][1].Count);
+            Assert.AreEqual(2, ship.Rows[0][2].Count);
+        }
+
+        [TestMethod]
+        //In this case the ship tries to add the container to the lightest side which is the already full right side
+        //which means the container cannot be added
+        public void ChooseSideTestFalse()
+        {
+            Ship ship = new Ship(1, 1, 1, 1000000);
+            ship.Rows.Clear();
+            Row row = new Row(false);
+            Stack stack1 = new Stack(1);
+            Stack stack2 = new Stack(1);
+            Stack stack3 = new Stack(1);
+            Stack stack4 = new Stack(1);
+            Container container1 = new Container(500, Normal);
+            Container container2 = new Container(100, Normal);
+            Container container3 = new Container(100, Normal);
+            Container container4 = new Container(100, Normal);
+            stack1.Add(container1);
+            stack3.Add(container2);
+            stack4.Add(container3);
+            row.Add(stack1);
+            row.Add(stack2);
+            row.Add(stack3);
+            row.Add(stack4);
+            ship.Rows.Add(row);
+            ship.UpdateWeight();
+            Assert.AreEqual(0, ship.Rows[0][1].Count);
+            Assert.AreEqual(1, ship.Rows[0][2].Count);
+            Assert.IsFalse(ship.AddContainer(container3));
+            Assert.AreEqual(0, ship.Rows[0][1].Count);
+            Assert.AreEqual(1, ship.Rows[0][2].Count);
         }
     }
 }

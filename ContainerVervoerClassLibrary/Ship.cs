@@ -80,6 +80,29 @@ namespace ContainerVervoerClassLibrary
             }
         }
 
+        public string CheckWeightSpread()
+        {
+            int left = 0;
+            int right = 0;
+
+            foreach (Row row in Rows)
+            {
+                for (int i = 0; i < (row.Count / 2); i++)
+                {
+                    left = left + row[i].Weight;
+                }
+
+                for (int i = (row.Count / 2); i < row.Count; i++)
+                {
+                    right = right + row[i].Weight;
+                }
+            }
+
+            double leftPercentage = ((double)left / (double)weight) * 100;
+            double rightPercentage = ((double)right / (double)weight) * 100;
+
+            return $"{leftPercentage}% of the weight is on the left side, {rightPercentage}% of the weight is on the right side";
+        }
         //Updates the weight of the ship
         public void UpdateWeight()
         {

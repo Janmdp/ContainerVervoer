@@ -38,6 +38,8 @@ namespace ContainerVervoer
                 labelWeight.ForeColor = Color.Red;
                 labelWeight.Text = $"{_ship.GetUsedWeight()}% of the maximum weight of the ship is used";
             }
+
+            labelSpread.Text = _ship.CheckWeightSpread();
         }
 
         private void buttonCreateShip_Click(object sender, EventArgs e)

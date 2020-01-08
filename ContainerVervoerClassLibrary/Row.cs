@@ -8,7 +8,6 @@ namespace ContainerVervoerClassLibrary
     {
         //fields
         private bool cooled;
-
         private int weight;
         private int id;
         private static int nextId = 1;
@@ -67,7 +66,7 @@ namespace ContainerVervoerClassLibrary
 
         private List<Stack> ChooseSideOdd(Ship ship, decimal middle)
         {
-            List<Stack> side = new List<Stack>();
+            
             int left = 0;
             int right = 0;
             foreach (Row row in ship.Rows)
@@ -82,9 +81,17 @@ namespace ContainerVervoerClassLibrary
                     right = right + row[i].Weight;
                 }
             }
-            
 
-            if (left < right)
+            double leftPercentage = ((double) (left + (this[(int) middle].Weight / 2)) / (double)ship.Weight) * 100;
+            double rightPercentage = ((double)(right + (this[(int)middle].Weight / 2)) / (double)ship.Weight) * 100;
+
+            return CreateListOdd(leftPercentage, rightPercentage, middle);
+        }
+
+        private List<Stack> CreateListOdd(double leftPercentage, double rightPercentage, decimal middle)
+        {
+            List<Stack> side = new List<Stack>();
+            if (rightPercentage >= 60)
             {
                 for (int i = 0; i < (middle - 1); i++)
                 {
@@ -93,9 +100,9 @@ namespace ContainerVervoerClassLibrary
 
                 return side;
             }
-            else if (left > right)
+            else if (leftPercentage >= 60)
             {
-                for (int i = (int) middle; i < this.Count; i++)
+                for (int i = (int)middle; i < this.Count; i++)
                 {
                     side.Add(this[i]);
                 }
@@ -104,12 +111,30 @@ namespace ContainerVervoerClassLibrary
             }
             else
             {
+                if (leftPercentage < rightPercentage)
+                {
+                    for (int i = 0; i < (middle); i++)
+                    {
+                        side.Add(this[i]);
+                    }
+
+                    return side;
+                }
+                else if (leftPercentage > rightPercentage)
+                {
+                    for (int i = (int)middle - 1; i < this.Count; i++)
+                    {
+                        side.Add(this[i]);
+                    }
+
+                    return side;
+                }
                 return this;
             }
         }
         private List<Stack> ChooseSideEven(Ship ship)
         {
-            List<Stack> side = new List<Stack>();
+            
             int left = 0;
             int right = 0;
 
@@ -125,10 +150,18 @@ namespace ContainerVervoerClassLibrary
                     right = right + row[i].Weight;
                 }
             }
-            
-            
 
-            if (left < right)
+            double leftPercentage = ((double)left / (double)ship.Weight) * 100;
+            double rightPercentage = ((double)right / (double)ship.Weight) * 100;
+
+            return CreateListEven(leftPercentage, rightPercentage);
+
+        }
+
+        private List<Stack> CreateListEven(double leftPercentage, double rightPercentage)
+        {
+            List<Stack> side = new List<Stack>();
+            if (rightPercentage >= 60)
             {
                 for (int i = 0; i < (this.Count / 2); i++)
                 {
@@ -137,20 +170,37 @@ namespace ContainerVervoerClassLibrary
 
                 return side;
             }
-            else if (left > right)
+            else if (leftPercentage >= 60)
             {
                 for (int i = (this.Count / 2); i < this.Count; i++)
                 {
-                   side.Add(this[i]);
+                    side.Add(this[i]);
                 }
 
                 return side;
             }
             else
             {
+                if (leftPercentage < rightPercentage)
+                {
+                    for (int i = 0; i < (this.Count / 2); i++)
+                    {
+                        side.Add(this[i]);
+                    }
+
+                    return side;
+                }
+                else if (leftPercentage > rightPercentage)
+                {
+                    for (int i = (this.Count / 2); i < this.Count; i++)
+                    {
+                        side.Add(this[i]);
+                    }
+
+                    return side;
+                }
                 return this;
             }
-
         }
 
         //Check if there are stacks the container can be added to and adds the container
